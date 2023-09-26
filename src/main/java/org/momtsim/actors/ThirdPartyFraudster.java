@@ -131,7 +131,8 @@ public class ThirdPartyFraudster extends SuperActor implements HasClientIdentity
                 Transaction transfer = c.handleTransfer(this.mule, step, transferAmount);
 
                 // Randomly set the transfer transaction as fraudulent with a 30% chance
-                if (paysim.getRNG().nextBoolean(0.3)) {
+                if (paysim.getRNG().nextDouble() < 0.3) {
+                //if (paysim.getRNG().nextBoolean(0.3)) {
                     transfer.setFraud(true);
                 }
 
@@ -141,7 +142,8 @@ public class ThirdPartyFraudster extends SuperActor implements HasClientIdentity
         }
 
         // With a 30% chance, attempt a fraudulent cash-out from the mule account
-        if (paysim.getRNG().nextBoolean(0.3)) {
+        // if (paysim.getRNG().nextBoolean(0.3)) {
+        if (paysim.getRNG().nextDouble() < 0.3) {
             mule.fraudulentCashOut(paysim, step);
         }
 

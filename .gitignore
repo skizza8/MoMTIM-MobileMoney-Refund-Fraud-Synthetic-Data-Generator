@@ -33,3 +33,5 @@ outputs/
 target/
 .DS_Store
 out/
+
+.fake
